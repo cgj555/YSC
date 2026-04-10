@@ -1585,7 +1585,7 @@
       "type": 3,
       "api": "./lib/哔哩直播.py"
     },
-    {
+  {
       "key": "bili",
       "name": "🅱哔哔┃合集🅱",
       "type": 3,
@@ -1597,7 +1597,6 @@
         "type": "rect",
         "ratio": 1.433
       },
- "jar": "https://aisearch.cdn.bcebos.com/fileManager/40aicoLgDtklAyS8-ZZBrA/1767972472524o87GLB.txt;md5;3b7c681a4cfc16b009a0a566eb65a694",
       "ext": {
         "json": "https://support-chat.rongcloud.cn/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--47a8ff0e68559a89a9a75b37d09a2b0854dc5a8a/bili001.txt"
       }
