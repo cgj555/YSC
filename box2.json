@@ -10,7 +10,7 @@
           "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"},
         {"name": "老陈酒店","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/itvlist.txt",
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"},
-          {"name": "局域网IPTV","type": 0,"url":"http://192.168.0.9:50089/sub?5GrrcaZb=txt",
+          {"name": "局域网IPTV","type": 0,"url":"http://192.168.0.9:50089/sub?cgj=txt",
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
