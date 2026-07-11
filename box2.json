@@ -135,29 +135,7 @@
 "api":"https://gitee.com/lcy5/lcy/raw/master/lib/%E6%A1%A6%E6%A0%91.py",
 "changeable":1
 },
-   {
-            "key": "红果短剧",
-            "name": "🪆红果｜短剧py",
-            "type": 3,
-            "api": "./lib/红果短剧.py",
-            "searchable": 1,
-            "changeable": 1,
-            "quickSearch": 1,
-            "filterable": 1,
-            "playerType": 2
-        },
-   
-{
-            "key": "河马短剧",
-            "name": "🪆河马｜短剧py",
-            "type": 3,
-            "api": "./lib/河马短剧.py",
-            "searchable": 1,
-            "changeable": 1,
-            "quickSearch": 1,
-            "filterable": 1,
-            "playerType": 2
-        },
+  
 
 
     {
@@ -1571,6 +1549,29 @@
       "quickSearch": 1,
       "filterable": 1
     },
+    {
+            "key": "红果短剧",
+            "name": "🪆红果｜短剧py",
+            "type": 3,
+            "api": "https://d.kstore.dev/download/8344/py/红果短剧.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "playerType": 2
+        },
+   
+{
+            "key": "河马短剧",
+            "name": "🪆河马｜短剧py",
+            "type": 3,
+            "api": "https://d.kstore.dev/download/8344/py/河马短剧.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "playerType": 2
+        },
     {
       "key": "甜圈短剧",
       "name": "🎦甜圈🔹短剧",
