@@ -45,7 +45,37 @@
 			"type": 3,
 			"api": "https://ghfast.top/https://raw.githubusercontent.com/FGBLH/HKL/refs/heads/main/py/奇优影院.py"
 		},
-
+	  
+{
+			"key": "AU",
+			"name": "爱看机器人.py",
+			"type": 3,
+			"api": "./lib/爱看机器人.py"
+		},
+{
+			"key": "BU",
+			"name": "剧OK.py",
+			"type": 3,
+			"api": "./lib/剧OK.py"
+		},
+{
+			"key": "CU",
+			"name": "兄弟影视.py",
+			"type": 3,
+			"api": "./lib/兄弟影视.py"
+		},
+{
+			"key": "DU",
+			"name": "追光影视.py",
+			"type": 3,
+			"api": "./lib/追光影视.py"
+		},
+{
+			"key": "EU",
+			"name": "58影视.py",
+			"type": 3,
+			"api": "./lib/58影视.py"
+		},
         {
       "key": "csp_Kugou",
       "name": "🌌酷狗🔹音乐",
