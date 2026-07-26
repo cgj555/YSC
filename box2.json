@@ -39,43 +39,7 @@
     },
 
    
-{
-			"key": "QU",
-			"name": "🐬奇优影院.py",
-			"type": 3,
-			"api": "https://ghfast.top/https://raw.githubusercontent.com/FGBLH/HKL/refs/heads/main/py/奇优影院.py"
-		},
-	  
-{
-			"key": "AU",
-			"name": "爱看机器人.py",
-			"type": 3,
-			"api": "./lib/爱看机器人.py"
-		},
-{
-			"key": "BU",
-			"name": "剧OK.py",
-			"type": 3,
-			"api": "./lib/剧OK.py"
-		},
-{
-			"key": "CU",
-			"name": "兄弟影视.py",
-			"type": 3,
-			"api": "./lib/兄弟影视.py"
-		},
-{
-			"key": "DU",
-			"name": "追光影视.py",
-			"type": 3,
-			"api": "./lib/追光影视.py"
-		},
-{
-			"key": "EU",
-			"name": "58影视.py",
-			"type": 3,
-			"api": "  https://ghfast.top/https://raw.githubusercontent.com/cgj555/YSC/refs/heads/main/lib/58%E5%BD%B1%E8%A7%86.py"
-		},
+
 
 	
         {
@@ -2210,8 +2174,45 @@
       "api": "csp_XBPQ",
       "ext": "https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/XBPQ/VS影视.json",
       "jar": "https://ncstatic-file.clewm.net/rsrc/2026/0113/09/75ad8b27e65c2e4c7e13e5c558e60bc0.jpg;md5;4d860d06ec233dbcb891b76055f099d5"
-    }
-
+    },
+	  
+{
+			"key": "QU",
+			"name": "🐬奇优影院.py",
+			"type": 3,
+			"api": "https://ghfast.top/https://raw.githubusercontent.com/FGBLH/HKL/refs/heads/main/py/奇优影院.py"
+		},
+	  
+{
+			"key": "AU",
+			"name": "爱看机器人.py",
+			"type": 3,
+			"api": "./lib/爱看机器人.py"
+		},
+{
+			"key": "BU",
+			"name": "剧OK.py",
+			"type": 3,
+			"api": "./lib/剧OK.py"
+		},
+{
+			"key": "CU",
+			"name": "兄弟影视.py",
+			"type": 3,
+			"api": "./lib/兄弟影视.py"
+		},
+{
+			"key": "DU",
+			"name": "追光影视.py",
+			"type": 3,
+			"api": "./lib/追光影视.py"
+		},
+{
+			"key": "EU",
+			"name": "58影视.py",
+			"type": 3,
+			"api": "./lib/58影视.py"
+		}
 
 
 
