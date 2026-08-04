@@ -2207,6 +2207,16 @@
 			"type": 3,
 			"api": "./lib/追光影视.py"
 		},
+
+{
+			"key": "UU",
+			"name": "茶杯虎.py",
+			"type": 3,
+			"api": "./lib/茶杯虎.py"
+		},
+
+
+	  
 {
 			"key": "EU",
 			"name": "58影视.py",
