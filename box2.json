@@ -37,19 +37,8 @@
         "ratio": 1.597
       }
     },
-	   {
-      "key": "4K指南",
-      "name": "🇨🇳4K指南｜html",
-      "type": 3,
-      "api": "csp_4K指南",
-      "homePage": "./html/4K指南.html",
-      "searchable": 1
-    },
+	 
 
-   
-
-
-	
         {
       "key": "csp_Kugou",
       "name": "🌌酷狗🔹音乐",
