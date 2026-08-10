@@ -1,385 +1,271 @@
-# -*- coding: utf-8 -*-
-import sys
+from base.spider import Spider
+import requests
 import re
-import json
-from urllib.parse import urljoin, quote, unquote, urlparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import urllib.parse
 
-sys.path.append('..')
-try:
-    from base.spider import Spider
-except ImportError:
-    class Spider:
-        def fetch(self, url, headers=None, **kw):
-            import requests as rq
-            kw.pop('timeout', None)
-            r = rq.get(url, headers=headers, timeout=15, **kw)
-            r.encoding = 'utf-8'
-            return r
-
-HOST = "https://www.58hu.com"
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-
-# 封面URL中这些域名已失效，对应影片会被过滤掉
-DEAD_IMG_HOSTS = {"image.caiji.cyou", "wim.xrc888.com"}
-
-CATEGORIES = {
-    "1": "电影", "2": "电视剧", "3": "综艺",
-    "4": "动漫", "21": "体育",
+host = "https://mov.cenguigui.cn"
+base_url = host + "/duanju/api.php"
+quality_host = "https://mov.cenguigui.cn"
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'
 }
-
-# 子分类: {父分类ID: {子分类ID: 名称}}
-SUB_CATS = {
-    "1": {"6": "动作片", "7": "喜剧片", "8": "爱情片", "9": "科幻片", "10": "恐怖片",
-           "11": "剧情片", "12": "战争片", "22": "纪录片"},
-    "2": {"13": "国产剧", "14": "港台剧", "15": "日韩剧", "16": "欧美剧", "24": "海外剧",
-           "29": "BI番剧", "30": "BI国创", "31": "BI电影"},
-    "3": {"28": "最新综艺"},
-    "4": {"27": "最新动漫"},
-    "21": {"26": "体育赛事"},
-}
+timeout = 10
 
 class Spider(Spider):
-    def init(self, extend=""):
-        global HOST
-        try:
-            r = self.fetch(HOST, headers={"User-Agent": UA}, timeout=15000)
-            if hasattr(r, 'url') and r.url and r.url != HOST.rstrip("/"):
-                HOST = r.url.rstrip("/")
-        except:
-            pass
+    def getName(self):
+        return "小心儿悠悠"
 
-    def homeContent(self, filter=False):
-        r = {"class": [], "list": []}
-        for k, v in CATEGORIES.items():
-            r["class"].append({"type_id": k, "type_name": v})
-        return r
-
-    def homeVideoContent(self):
-        try:
-            r = self.fetch(HOST, headers={"User-Agent": UA}, timeout=15000)
-            html = r.text if hasattr(r, 'text') else str(r)
-            return {"list": self._items(html)}
-        except:
-            return {"list": []}
-
-    def categoryContent(self, tid, pg=1, filter=False, extend=""):
-        pn = 1
-        try: pn = max(int(str(pg)), 1)
-        except: pass
-        cat = str(tid)
-        try:
-            url = self._build_category_url(cat, pn, extend)
-            r = self.fetch(url, headers={"User-Agent": UA}, timeout=30000)
-            html = r.text if hasattr(r, 'text') else str(r)
-            cat_name = CATEGORIES.get(cat, "")
-            items = self._items(html, cat_filter=cat_name)
-            # 过滤掉没有封面或没有可播放线路的影片（并发检查）
-            items = self._filter_items(items)
-            pc = self._pagecount(html, pn)
-            return {"page": pn, "pagecount": pc, "limit": 30, "total": len(items), "list": items}
-        except:
-            return {"page": pn, "pagecount": 1, "limit": 30, "total": 0, "list": []}
-
-    def _build_category_url(self, cat, pn, extend=""):
-        """构建分类URL，支持筛选参数"""
-        # 解析extend中的筛选条件
-        ext = {}
-        if extend and isinstance(extend, str) and extend.strip():
-            try:
-                ext = json.loads(extend)
-            except:
-                pass
-
-        # 判断是否为子分类（在SUB_CATS中）
-        is_sub = False
-        for parent, subs in SUB_CATS.items():
-            if cat in subs:
-                is_sub = True
-                break
-
-        # 所有分类用 vod/show 模式
-        parts = []
-        # class/类型
-        cls = ext.get("class") or ""
-        if cls and cls != "全部":
-            parts.append(f"class/{quote(cls)}")
-        # area/地区
-        area = ext.get("area") or ""
-        if area and area != "全部":
-            parts.append(f"area/{quote(area)}")
-        # year/年代
-        year = ext.get("year") or ""
-        if year and year != "全部":
-            parts.append(f"year/{quote(year)}")
-        # letter/字母
-        letter = ext.get("letter") or ""
-        if letter and letter != "全部":
-            parts.append(f"letter/{quote(letter)}")
-        # sort/排序
-        sort = ext.get("sort") or ""
-        if sort:
-            parts.append(f"by/{quote(sort)}")
-        # page
-        if pn > 1:
-            parts.append(f"page/{pn}")
-        filters = "/".join(parts)
-        if filters:
-            return f"{HOST}/index.php/vod/show/{filters}/id/{cat}.html"
-        else:
-            return f"{HOST}/index.php/vod/show/id/{cat}.html"
-
-    def detailContent(self, ids):
-        if isinstance(ids, list):
-            vid = ids[0] if ids else ""
-        else:
-            vid = str(ids) if ids else ""
-        m = re.search(r'(\d+)', str(vid))
-        vid = m.group(1) if m else ""
-        if not vid:
-            return {"list": []}
-        try:
-            r = self.fetch(f"{HOST}/index.php/vod/detail/id/{vid}.html", headers={"User-Agent": UA}, timeout=30000)
-            h = r.text if hasattr(r, 'text') else str(r)
-        except:
-            return {"list": []}
-        d = {"vod_id": vid, "vod_name": "", "vod_pic": "", "vod_year": "",
-             "vod_area": "", "vod_class": "", "vod_director": "", "vod_actor": "",
-             "vod_content": "", "vod_remarks": "", "vod_play_from": "", "vod_play_url": ""}
-        # 标题
-        tn = re.search(r'<h1[^>]*>(.*?)</h1>', h)
-        if tn:
-            d["vod_name"] = re.sub(r'<[^>]+>', '', tn.group(1)).strip()
-        if not d["vod_name"]:
-            tn = re.search(r'<title>(.*?)</title>', h)
-            if tn:
-                d["vod_name"] = tn.group(1).split("-")[0].strip()
-        # 封面: 优先 class="pic-img video-pic" 里的img
-        p = re.search(r'class="pic-img video-pic"[\s\S]{0,100}?<img[^>]*src="(https?://[^"]+)"', h, re.I)
-        if not p:
-            p = re.search(r'data-src="(https?://[^"]+)"', h)
-        if not p:
-            p = re.search(r'src="(https?://[^"]+\.(?:jpg|jpeg|png|webp))"', h, re.I)
-        if p:
-            pic_url = p.group(1)
-            if pic_url.startswith("http://"):
-                pic_url = pic_url.replace("http://", "https://", 1)
-            d["vod_pic"] = pic_url
-        # 简介
-        desc_m = re.search(r'简介[\s\S]{0,30}?>([\s\S]*?)</div>', h)
-        if desc_m:
-            d["vod_content"] = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', desc_m.group(1))).strip()[:500]
-        if not d["vod_content"]:
-            desc_m = re.search(r'class="[^"]*desc[^"]*"[^>]*>([\s\S]*?)</div>', h)
-            if desc_m:
-                d["vod_content"] = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', desc_m.group(1))).strip()[:500]
-        # 年份
-        ym = re.search(r'(\d{4})', d.get("vod_name", ""))
-        if ym: d["vod_year"] = ym.group(1)
-        # 地区/分类/导演/主演等
-        info_items = re.findall(r'<li[^>]*class="[^"]*data[^"]*"[^>]*>([\s\S]*?)</li>', h)
-        for item in info_items:
-            clean = re.sub(r'<[^>]+>', '', item).strip()
-            if '导演' in item and not d["vod_director"]:
-                d["vod_director"] = clean.replace('导演', '').strip().rstrip('，').strip()
-            elif '主演' in item and not d["vod_actor"]:
-                d["vod_actor"] = clean.replace('主演', '').strip().rstrip('，').strip()
-            elif '类型' in item and not d["vod_class"]:
-                d["vod_class"] = clean.replace('类型', '').strip()
-            elif '地区' in item and not d["vod_area"]:
-                d["vod_area"] = clean.replace('地区', '').strip()
-        # 备注
-        rm = re.search(r'class="[^"]*remarks?[^"]*"[^>]*>([^<]+)<', h)
-        if rm: d["vod_remarks"] = rm.group(1).strip()
-        # 播放源（只保留m3u8直链线路）
-        try:
-            pf, pu = [], []
-            line_map = {}
-            for sid, name in re.findall(r'id="#con_playlist_(\d+)"[^>]*class="gico[^"]*"[^>]*>([^<]+)</a>', h):
-                line_map[sid] = name.strip()
-            for m in re.finditer(r'<ul[^>]*id="con_playlist_(\d+)"[^>]*>([\s\S]*?)</ul>', h):
-                sid = m.group(1)
-                content = m.group(2)
-                eps = re.findall(r'href="(/index\.php/vod/play/id/\d+/sid/\d+/nid/\d+\.html)"[^>]*>([\s\S]*?)</a>', content)
-                if not eps:
-                    continue
-                line_name = line_map.get(sid, f"线路{sid}")
-                # 预检第1集：只保留返回m3u8直链的线路
-                first_url = urljoin(HOST, eps[0][0])
-                try:
-                    rp = self.fetch(first_url, headers={"User-Agent": UA}, timeout=10000)
-                    hp = rp.text if hasattr(rp, 'text') else str(rp)
-                    pd = re.search(r'player_data\s*=\s*(\{[\s\S]*?\})\s*[;<]', hp)
-                    if not pd:
-                        continue
-                    pdata = json.loads(pd.group(1))
-                    purl = pdata.get("url", "")
-                    if not purl or not purl.startswith("http") or ".m3u8" not in purl:
-                        continue
-                except:
-                    continue
-                ep_list = []
-                for url, name in eps:
-                    clean_name = re.sub(r'<[^>]+>', '', name).strip()
-                    ep_list.append(f"{clean_name}${urljoin(HOST, url)}")
-                if ep_list:
-                    pf.append(line_name)
-                    pu.append("#".join(ep_list))
-            if pf:
-                d["vod_play_from"] = "$$$".join(pf)
-                d["vod_play_url"] = "$$$".join(pu)
-        except:
-            pass
-        return {"list": [d]}
-
-    def searchContent(self, key, quick=False, pg="1"):
-        try:
-            pn = 1
-            try: pn = int(str(pg))
-            except: pass
-            url = f"{HOST}/index.php/vod/search/wd/{quote(key)}"
-            if pn > 1:
-                url += f"/page/{pn}"
-            url += ".html"
-            r = self.fetch(url, headers={"User-Agent": UA}, timeout=30000)
-            html = r.text if hasattr(r, 'text') else str(r)
-            items = self._items(html)
-            return {"list": items, "page": pn}
-        except:
-            return {"list": []}
-
-    def playerContent(self, flag, id, vipFlags=None):
-        url = str(id) if id else str(flag)
-        if url.startswith("http") and ".m3u8" in url:
-            return {"url": url}
-        if url.startswith("http"):
-            full_url = url
-        else:
-            if not url.startswith("/"):
-                url = "/" + url
-            full_url = urljoin(HOST, url)
-        try:
-            r = self.fetch(full_url, headers={"User-Agent": UA}, timeout=30000)
-            h = r.text if hasattr(r, 'text') else str(r)
-        except:
-            return {"url": ""}
-        pd = re.search(r'player_data\s*=\s*(\{[\s\S]*?\})\s*[;<]', h)
-        if pd:
-            try:
-                data = json.loads(pd.group(1))
-                play_url = data.get("url", "")
-                if play_url:
-                    return {"url": play_url}
-            except:
-                pass
-        m3u8 = re.search(r'(https?://[^\s"\'<>]+\.m3u8)', h)
-        if m3u8:
-            return {"url": m3u8.group(1)}
-        return {"url": ""}
-
-    def localProxy(self, param):
+    def init(self, extend):
         pass
 
-    def _filter_items(self, items):
-        """过滤：去掉没封面的 + 并发检查线路，去掉没有LZ/YZ的"""
-        if not items:
-            return items
-        # 先去掉没封面的
-        items = [it for it in items if it.get("vod_pic")]
-        if not items:
-            return items
-        # 并发检查每个影片是否有LZ/YZ线路
-        playable_ids = set()
-        def check(it):
-            return it["vod_id"], self._check_playable(it["vod_id"])
-        with ThreadPoolExecutor(max_workers=10) as executor:
-            futures = {executor.submit(check, it): it for it in items}
-            for future in as_completed(futures):
-                try:
-                    vid, ok = future.result()
-                    if ok:
-                        playable_ids.add(vid)
-                except:
-                    pass
-        return [it for it in items if it["vod_id"] in playable_ids]
+    def isVideoFormat(self, url):
+        pass
 
-    def _check_playable(self, vid):
-        """检查详情页是否有LZ或YZ线路名"""
-        try:
-            r = self.fetch(f"{HOST}/index.php/vod/detail/id/{vid}.html", headers={"User-Agent": UA}, timeout=5000)
-            h = r.text if hasattr(r, 'text') else str(r)
-            lines = re.findall(r'id="#con_playlist_\d+"[^>]*class="gico[^"]*"[^>]*>([^<]+)</a>', h)
-            for name in lines:
-                if "LZ" in name or "YZ" in name:
-                    return True
-            return False
-        except:
-            return False
+    def manualVideoCheck(self):
+        pass
 
-    def _pagecount(self, html, current_page=1):
-        # 匹配分页链接: /index.php/vod/show/.../page/2/...
-        pages = re.findall(r'/page/(\d+)/', html)
-        max_page = current_page
-        for p in pages:
-            try:
-                n = int(p)
-                if n > max_page:
-                    max_page = n
-            except:
-                pass
-        # 如果当前页是最大且还有下一页
-        has_next = re.search(r'>下一页<', html)
-        if has_next and max_page <= current_page + 5:
-            max_page = current_page + 5
-        return max_page
-
-    def _items(self, html, cat_filter=""):
-        items, seen = [], set()
-        # 分类过滤关键词映射
-        ANIME_KEYWORDS = {'动漫', '动画', '卡通', '番剧', '番'}
-        TV_KEYWORDS = {'电视剧', '国产剧', '港台剧', '日韩剧', '欧美剧', '海外剧'}
-        MOVIE_KEYWORDS = {'电影', '动作片', '喜剧片', '爱情片', '科幻片', '恐怖片', '剧情片', '战争片', '纪录片'}
-        for m in re.finditer(r'href="(/index\.php/vod/detail/id/(\d+)\.html)"[^>]*title="([^"]*)"', html):
-            vid = m.group(2)
-            if vid in seen:
-                continue
-            name = m.group(3).strip()
-            if not name or len(name) > 100:
-                continue
-            after = html[m.end():m.end()+2000]
-            # 封面: 优先 data-original，再 data-src，再 src。HTTP升级为HTTPS
-            cover = re.search(r'data-original="(https?://[^"]+)"', after)
-            if not cover:
-                cover = re.search(r'data-src="(https?://[^"]+)"', after)
-            if not cover:
-                cover = re.search(r'src="(https?://[^"]+\.(?:jpg|jpeg|png|webp))"', after, re.I)
-            pic_url = cover.group(1) if cover else ""
-            if pic_url.startswith("http://"):
-                pic_url = pic_url.replace("http://", "https://", 1)
-            # 过滤失效图床域名
-            if pic_url:
-                host = urlparse(pic_url).hostname or ""
-                if host in DEAD_IMG_HOSTS:
-                    pic_url = ""
-            # 备注
-            remark = re.search(r'class="titles"[^>]*>([^<]+)<', after)
-            if not remark:
-                remark = re.search(r'class="[^"]*prb[^"]*"[^>]*>([^<]+)<', after)
-            # 分类过滤: 从 mcat 提取分类标签（注意span内可能有换行）
-            mcat_raw = re.search(r'class="mcat">([\s\S]*?)</div>', after)
-            if mcat_raw and cat_filter:
-                mcat_text = re.sub(r'<[^>]+>', '', mcat_raw.group(1)).strip()
-                if cat_filter == "电视剧":
-                    if any(k in mcat_text for k in ANIME_KEYWORDS):
-                        continue
-                elif cat_filter == "动漫":
-                    if any(k in mcat_text for k in TV_KEYWORDS):
-                        continue
-            seen.add(vid)
-            items.append({
-                "vod_id": vid,
-                "vod_name": name[:50],
-                "vod_pic": pic_url,
-                "vod_remarks": remark.group(1).strip() if remark else "",
+    def homeContent(self, filter):
+        class_names = "推荐榜&热播榜&新剧榜&漫剧榜大唐&大秦&大明&擦边&逆袭&霸总&豪门恩怨&神豪&都市日常&大女主&都市修仙&强者回归&重生&闪婚&赘婿逆袭&追妻&萌宝&奇幻脑洞&传承觉醒&奇幻爱情&乡村&历史古代&王妃&娱乐圈&暗恋成真&系统&真假千金&穿书&女帝&团宠&年代爱情&玄幻仙侠&皇后&逆袭&霸总&现代言情&打脸虐渣&豪门恩怨&神豪&马甲&都市日常&战神归来&小人物&女性成长&大女主&穿越&都市修仙&强者回归&亲情&古装&重生&闪婚&赘婿逆袭&虐恋&追妻&天下无敌&家庭伦理&萌宝&古风权谋&职场&奇幻脑洞&异能&无敌神医&古风言情&传承觉醒&现言甜宠&奇幻爱情&乡村&历史古代&王妃&高手下山&娱乐圈&强强联合&破镜重圆&暗恋成真&民国&欢喜冤家&系统&真假千金&龙王&校园&穿书&女帝&团宠&年代爱情&玄幻仙侠&青梅竹马&悬疑推理&皇后&替身&大叔&喜剧&剧情"
+        class_list = class_names.split('&')
+        
+        classes = []
+        for class_name in class_list:
+            classes.append({
+                "type_id": class_name,
+                "type_name": class_name
             })
-        return items
+            
+        return {"class": classes}
+
+    def homeVideoContent(self):
+        return {'list': []}
+
+    def categoryContent(self, cid, pg, filter, ext):
+        videos = []
+        page = int(pg) if pg else 1
+        
+        params = f"page={page}&name={urllib.parse.quote(cid)}"
+        
+        tab_type = "19"
+        if ext and 'tab_type' in ext:
+            tab_type = ext['tab_type']
+        params += f"&tab_type={tab_type}"
+        
+        url = f"{base_url}?{params}"
+        
+        try:
+            response = requests.get(url=url, headers=headers, timeout=timeout)
+            if response.status_code != 200:
+                return {'list': []}
+                
+            response.encoding = "utf-8"
+            data = response.json()
+
+            if data.get('code') == 200 and data.get('data'):
+                for vod in data['data']:
+                    vod_id = f"book_id={vod.get('book_id', '')}&actor={vod.get('author', '')}&type={vod.get('type', '')}"
+                    videos.append({
+                        "vod_id": vod_id,
+                        "vod_name": vod.get('title', ''),
+                        "vod_pic": vod.get('cover', ''),
+                        "vod_remarks": vod.get('type', ''),
+                        "vod_content": vod.get('intro', '')
+                    })
+        except Exception:
+            return {'list': []}
+
+        return {
+            'list': videos,
+            'page': pg,
+            'pagecount': 9999,
+            'limit': 20,
+            'total': 999999
+        }
+
+    def detailContent(self, ids):
+        did = ids[0]
+        
+        params = {}
+        queryString = did.split('?')[1] if '?' in did else did
+        pairs = queryString.split('&')
+        for i in range(len(pairs)):
+            pair = pairs[i].split('=')
+            if len(pair) == 2:
+                params[pair[0]] = pair[1]
+        
+        book_id = params.get('book_id', '')
+        actor = params.get('actor', '')
+        fullType = params.get('type', '')
+        
+        if not book_id:
+            match = re.search(r'book_id=([^&]*)', did)
+            if match and match[1]:
+                book_id = match[1]
+        
+        if not book_id:
+            return {'list': []}
+        
+        apiUrl = f"{base_url}?book_id={book_id}"
+        try:
+            response = requests.get(url=apiUrl, headers=headers, timeout=timeout)
+            if response.status_code != 200:
+                return {'list': []}
+            
+            data = response.json()
+            
+            if data.get('code') == 200 and data.get('data'):
+                vod_list = data['data']
+                
+                play_from = []
+                play_url = []
+                
+                quality_options = [
+                    ("超清", "2160p"),
+                    ("高清", "1080p"), 
+                    ("标清", "720p"),
+                    ("低清", "480p"),
+                    ("流畅", "360p")
+                ]
+                
+                for quality_name, quality_value in quality_options:
+                    urls = []
+                    
+                    for item in vod_list:
+                        chapterName = item.get('title', '')
+                        videoId = item.get('video_id', '')
+                        playUrl = f"{quality_host}/duanju/api.php?video_id={videoId}&type=json&level={quality_value}"
+                        urls.append(f"{chapterName}${playUrl}")
+                    
+                    play_from.append(quality_name)
+                    play_url.append("#".join(urls))
+                
+                actors = []
+                try:
+                    actor_api_url = f"{base_url}?series_id={book_id}&showRawParams=false"
+                    actor_response = requests.get(url=actor_api_url, headers=headers, timeout=timeout)
+                    if actor_response.status_code == 200:
+                        actor_data = actor_response.json()
+                        if actor_data.get('code') == 200 and 'celebrities' in actor_data:
+                            celebrities = actor_data['celebrities']
+                            if isinstance(celebrities, list):
+                                for celeb in celebrities:
+                                    actor_name = celeb.get('user_name') or celeb.get('name') or celeb.get('actor_name') or ''
+                                    if actor_name and actor_name.strip():
+                                        if actor_name not in actors:
+                                            actors.append(actor_name)
+                except Exception as e:
+                    print(f"获取演员信息失败: {e}")
+                    if actor:
+                        actors = [actor]
+                
+                actor_str = ", ".join(actors) if actors else (actor or "")
+                
+                categories = []
+                if 'category_names' in data and isinstance(data['category_names'], list):
+                    categories = data['category_names'][:3]  # 只取前3个
+                elif 'category' in data:
+                    categories = [data['category']][:1]
+                
+                type_str = ""
+                if categories:
+                    type_str = ", ".join(categories)
+                
+                remarks_str = f"共{len(vod_list)}集"
+                
+                content_str = data.get('desc', '')
+                
+                VOD = {
+                    "vod_id": did,
+                    "vod_name": data.get('book_name', ''),
+                    "vod_pic": data.get('book_pic', ''),
+                    "vod_actor": actor_str,
+                    "type_name": type_str or fullType,
+                    "vod_remarks": remarks_str,
+                    "vod_content": content_str,
+                    "vod_play_from": "$$$".join(play_from),
+                    "vod_play_url": "$$$".join(play_url)
+                }
+                
+                return {'list': [VOD]}
+            else:
+                return {'list': []}
+                
+        except Exception as e:
+            print(f"获取详情失败: {e}")
+            return {'list': []}
+
+    def playerContent(self, flag, id, vipFlags):
+        max_retries = 3
+        
+        for i in range(max_retries):
+            try:
+                response = requests.get(url=id, headers=headers, timeout=timeout)
+                if response.status_code == 200:
+                    data = response.json()
+                    
+                    if data.get('code') == 200 and data.get('data'):
+                        play_url = data['data'].get('url', '')
+                        
+                        if play_url:
+                            return {
+                                "parse": 0,
+                                "playUrl": '',
+                                "url": play_url,
+                                "header": headers
+                            }
+                    break
+            except:
+                if i < max_retries - 1:
+                    continue
+                else:
+                    break
+        
+        return {
+            "parse": 0,
+            "playUrl": '',
+            "url": 'about:blank',
+            "header": headers
+        }
+
+    def searchContent(self, key, quick, pg=1):
+        try:
+            page = int(pg)
+        except:
+            page = 1
+        
+        params = f"page={page}&name={urllib.parse.quote(key)}&tab_type=19"
+        search_url = f"{base_url}?{params}"
+        
+        try:
+            response = requests.get(search_url, headers=headers, timeout=timeout)
+            
+            if response.status_code != 200:
+                return {'list': []}
+            
+            response.encoding = "utf-8"
+            data = response.json()
+            
+            if data.get('code') != 200 or not data.get('data'):
+                return {'list': []}
+            
+            videos = []
+            for vod in data['data']:
+                vod_id = f"book_id={vod.get('book_id', '')}&actor={vod.get('author', '')}&type={vod.get('type', '')}"
+                videos.append({
+                    "vod_id": vod_id,
+                    "vod_name": vod.get('title', ''),
+                    "vod_pic": vod.get('cover', ''),
+                    "vod_remarks": vod.get('type', ''),
+                    "vod_content": vod.get('intro', '')
+                })
+            
+            return {
+                'list': videos,
+                'page': page,
+                'pagecount': 9999,
+                'limit': len(videos),
+                'total': 999999
+            }
+            
+        except Exception:
+            return {'list': []}
