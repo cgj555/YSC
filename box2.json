@@ -619,12 +619,6 @@
       "api": "csp_Jpys",
       "ext": "https://m.hkybqufgh.com,https://m.sizhengxt.com,https://m.9zhoukj.com,https://m.sizhengxt.com,https://m.jiabaide.cn"
     },
-   {
-			"key": "瓜瓜",
-			"name": "瓜子.py",
-			"type": 3,
-			"api": "./lib/瓜子.py"
-		},
 {
 			"key": "子子",
 			"name": "瓜子影.py",
