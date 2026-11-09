@@ -120,24 +120,7 @@
 "api":"https://gitee.com/lcy5/lcy/raw/master/lib/%E6%A1%A6%E6%A0%91.py",
 "changeable":1
 },
-	  {
-			"key": "橘汁视频4K",
-			"name": "橘汁视频4K.py",
-			"type": 3,
-			"api": "./lib/橘汁视频4K.py"
-		},
-{
-			"key": "剧下饭4K",
-			"name": "剧下饭4K.py",
-			"type": 3,
-			"api": "./lib/剧下饭4K.py"
-		},
-{
-			"key": "全能短剧",
-			"name": "全能短剧.py",
-			"type": 3,
-			"api": "./lib/全能短剧.py"
-		},
+	
   
 
 
