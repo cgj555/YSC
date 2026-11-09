@@ -14,15 +14,15 @@
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
-"警告文本": "欢迎收看老陈影视",
-  "网站": [
+"warningText": "欢迎收看老陈影视",
+  "sites": [
  {
       "key": "豆瓣",
-      "名称": "老陈推荐",
-      "类型": 3,
+      "name": "老陈推荐",
+      "type": 3,
       "api": "csp_Douban",
-      "可搜索的": 0,
-   "可更改": 1
+      "searchable": 0,
+   "changeable": 1
     },
     {
       "key": "配置中心",
