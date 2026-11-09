@@ -14,26 +14,26 @@
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
-"warningText": "欢迎收看老陈影视",
-  "sites": [
+"警告文本": "欢迎收看老陈影视",
+  "网站": [
  {
       "key": "豆瓣",
-      "name": "老陈推荐",
-      "type": 3,
+      "名称": "老陈推荐",
+      "类型": 3,
       "api": "csp_Douban",
-      "searchable": 0,
-   "changeable": 1
+      "可搜索的": 0,
+   "可更改": 1
     },
     {
       "key": "配置中心",
-      "name": "🌌配置中心🌌",
-      "type": 3,
+      "名称": "🌌配置中心🌌",
+      "类型": 3,
       "api": "csp_Config",
-      "searchable": 0,
-      "changeable": 0,
+      "可搜索的": 0,
+      "可更改": 0,
       "indexs": 0,
       "style": {
-        "type": "rect",
+        "类型": "矩形",
         "ratio": 1.597
       }
     },
@@ -85,7 +85,7 @@
       "key": "斗鱼直播",
       "name": "🌌斗鱼🔹直播",
       "type": 3,
-      "api": "./lib/drpy2.min.js",
+      : "./lib/drpy2.min.js",
       "ext": "./lib/斗鱼直播.js",
       "style": {
         "type": "rect",
@@ -133,6 +133,24 @@
 "api":"https://gitee.com/lcy5/lcy/raw/master/lib/%E6%A1%A6%E6%A0%91.py",
 "changeable":1
 },
+	  {
+			"key": "橘汁视频4K",
+			"name": "橘汁视频4K.py",
+			"type": 3,
+			"api": "./lib/橘汁视频4K.py"
+		},
+{
+			"key": "剧下饭4K",
+			"name": "剧下饭4K.py",
+			"type": 3,
+			"api": "./lib/剧下饭4K.py"
+		},
+{
+			"key": "全能短剧",
+			"name": "全能短剧.py",
+			"type": 3,
+			"api": "./lib/全能短剧.py"
+		},
   
 
 
