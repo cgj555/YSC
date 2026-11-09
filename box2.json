@@ -10,7 +10,7 @@
           "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"},
         {"name": "老陈酒店","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/itvlist.txt",
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"},
-          {"name": "局域网IPTV","type": 0,"url":"http://192.168.0.9:50089/sub?cgj=txt",
+          {"name": "局域网IPTV","type": 0,"url":"http://192.168.0.146:50089/sub?OHOWYlSw=txt",
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
@@ -26,18 +26,20 @@
     },
     {
       "key": "配置中心",
-      "名称": "🌌配置中心🌌",
-      "类型": 3,
+      "name": "🌌配置中心🌌",
+      "type": 3,
       "api": "csp_Config",
-      "可搜索的": 0,
-      "可更改": 0,
+      "searchable": 0,
+      "changeable": 0,
       "indexs": 0,
       "style": {
-        "类型": "矩形",
+        "type": "rect",
         "ratio": 1.597
       }
     },
-	 
+
+   
+
 
         {
       "key": "csp_Kugou",
@@ -55,7 +57,20 @@
         ]
       }
     },
-   
+    {
+      "key": "急救教学",
+      "name": "🌌家庭🔹急救",
+      "type": 3,
+      "api": "csp_FirstAid",
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 3.8
+      },
+      "gridview": "0-0-4.1"
+    },
    
     {
       "key": "虎牙直播",
@@ -72,7 +87,7 @@
       "key": "斗鱼直播",
       "name": "🌌斗鱼🔹直播",
       "type": 3,
-      "api":"./lib/drpy2.min.js",
+      "api": "./lib/drpy2.min.js",
       "ext": "./lib/斗鱼直播.js",
       "style": {
         "type": "rect",
@@ -101,6 +116,7 @@
       "filterable": 1,
       "playerType": 2
     },
+
 
 
   {
