@@ -619,15 +619,18 @@
       "api": "csp_Jpys",
       "ext": "https://m.hkybqufgh.com,https://m.sizhengxt.com,https://m.9zhoukj.com,https://m.sizhengxt.com,https://m.jiabaide.cn"
     },
-    {
-      "key": "瓜子影视",
-      "name": "🌌瓜子🔹官源",
-      "type": 3,
-      "api": "csp_Gz360",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
+   {
+			"key": "瓜瓜",
+			"name": "瓜子.py",
+			"type": 3,
+			"api": "./lib/瓜子.py"
+		},
+{
+			"key": "子子",
+			"name": "瓜子影.py",
+			"type": 3,
+			"api": "./lib/瓜子[影].py"
+		},
     {
       "key": "柠檬",
       "name": "🌌柠檬🔹蓝光",
