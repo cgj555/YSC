@@ -1564,28 +1564,28 @@
       "quickSearch": 1,
       "filterable": 1
     },
-    {
-            "key": "红果短剧",
+	  
+    { "key": "红果短剧",
             "name": "🪆红果｜短剧py",
             "type": 3,
-            "api": "./lib/红果短剧.py",
-            "searchable": 1,
-            "changeable": 1,
-            "quickSearch": 1,
-            "filterable": 1,
-            "playerType": 2
+            "api": "./lib/红果短剧.py"
         },
  {
             "key": "红果红果",
             "name": "红果多线py",
             "type": 3,
-            "api": "./lib/红果多线.py",
-            "searchable": 1,
-            "changeable": 1,
-            "quickSearch": 1,
-            "filterable": 1,
-            "playerType": 2
+            "api": "./lib/红果多线.py" 
         },
+
+
+
+
+{
+			"key": "子子",
+			"name": "瓜子影.py",
+			"type": 3,
+			"api": "./lib/瓜子[影].py"
+		},
 	  
    
 {
