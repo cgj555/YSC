@@ -1568,13 +1568,25 @@
             "key": "红果短剧",
             "name": "🪆红果｜短剧py",
             "type": 3,
-            "api": "https://d.kstore.dev/download/8344/py/红果短剧.py",
+            "api": "./lib/红果短剧.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
             "filterable": 1,
             "playerType": 2
         },
+ {
+            "key": "红果红果",
+            "name": "红果多线py",
+            "type": 3,
+            "api": "./lib/红果多线.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "playerType": 2
+        },
+	  
    
 {
             "key": "河马短剧",
