@@ -37,6 +37,182 @@
         "ratio": 1.597
       }
     },
+	   {
+      "key": "影探",
+      "name": "影探4k",
+      "api": "./lib/影探.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+    {
+      "key": "豆花影视",
+      "name": "豆花影视",
+      "api": "./lib/豆花影视.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+
+    {
+      "key": "看客TV",
+      "name": "看客TV",
+      "api": "./lib/看客TV.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+
+    {
+      "key": "66大片网",
+      "name": "66大片网",
+      "api": "./lib/66大片网.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+
+    {
+      "key": "极速追剧",
+      "name": "极速追剧",
+      "api": "./lib/极速追剧.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+
+    {
+      "key": "一起看",
+      "name": "一起看",
+      "api": "./lib/一起看.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+    {
+      "key": "苹果影视",
+      "name": "苹果影视",
+      "api": "./lib/苹果影视.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+
+    {
+      "key": "ddyy",
+      "name": "低端影视",
+      "api": "./lib/低端影视.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+    {
+      "key": "ago影院",
+      "name": "ago影院",
+      "api": "./lib/ago影院.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+    {
+      "key": "kkvm",
+      "name": "可可影视",
+      "api": "./lib/可可影视.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+ 
+
+    {
+      "key": "vidhub",
+      "name": "vidhub┃PY",
+      "api": "./lib/vidhub.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+
+    {
+      "key": "初见影视",
+      "name": "初见影视",
+      "api": "./lib/初见影视.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+ 
+    {
+      "key": "小苹果",
+      "name": "小苹果",
+      "api": "./lib/小苹果.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+
+    {
+      "key": "好剧屋",
+      "name": "好剧屋",
+      "api": "https://gitee.com/kevin0973/lc/raw/master/lib/好剧屋.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
+    },
+
+    {
+      "key": "wstv",
+      "name": "威视点播",
+      "type": 3,
+      "api": "./lib/威视TV.py",
+      "ext": "",
+      "category": "综合",
+      "searchable": 1
+    },
+   
+   
+    {
+      "key": "西瓜视频",
+      "name": "西瓜视频",
+      "type": 3,
+      "api": "./lib/西瓜视频.py",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
+    },
+    {
+      "key": "pomo",
+      "name": "pomo",
+      "type": 3,
+      "api": "https://gitee.com/kevin0973/lc/raw/master/lib/pomo.py",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
+    },
+
+    {
+      "key": "韩小圈",
+      "name": "韩小圈",
+      "type": 3,
+      "api": "./lib/韩小圈.py",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
+    },
 
    
 
