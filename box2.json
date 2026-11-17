@@ -14,26 +14,26 @@
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
-"warningText": "欢迎收看老陈影视",
-  "sites": [
+"警告文本": "欢迎收看老陈影视",
+  "站点": [
  {
       "key": "豆瓣",
-      "name": "老陈推荐",
-      "type": 3,
+      "名称": "老陈推荐",
+      "类型": 3,
       "api": "csp_Douban",
-      "searchable": 0,
-   "changeable": 1
+      "可搜索的": 0,
+   "可更改": 1
     },
     {
       "key": "配置中心",
-      "name": "🌌配置中心🌌",
-      "type": 3,
+      "名称": "🌌配置中心🌌",
+      "类型": 3,
       "api": "csp_Config",
-      "searchable": 0,
-      "changeable": 0,
+      "可搜索的": 0,
+      "可更改": 0,
       "indexs": 0,
       "style": {
-        "type": "rect",
+        "类型": "矩形",
         "ratio": 1.597
       }
     },
@@ -47,7 +47,7 @@
       "type": 3
     },
 	   {"name": "🌟💚影视🌟聚合💚🌟",
-            "api": "./lib/yw1.py",
+            "api": "./lib/7uYtB1fB,yw1.py",
             "filterable": 1,
             "quickSearch": 1,
             "searchable": 1,
@@ -60,7 +60,7 @@
       "filterable": 1,
       "quickSearch": 1,
       "searchable": 1,
-      "type": 3
+      
     },
 
     {
@@ -1780,31 +1780,12 @@
         }
       }
     },
- {
-      "name": "4K智家",
-      "type": 1,
-      "url": "http://125.208.23.251:1314/lunxun/?url="
-    },
 
-    {
-      "name": "星睿⚡4K",
-      "type": 1,
-      "url": "http://sspa8.top:8100/api/?cat_ext=eyJmbGFnIjpbInFxIiwi6IW+6K6vIiwicWl5aSIsIueIseWlh+iJuiIsIuWlh+iJuiIsInlvdWt1Iiwi5LyY6YW3Iiwic29odSIsIuaQnOeLkCIsImxldHYiLCLkuZDop4YiLCJtZ3R2Iiwi6IqS5p6cIiwidG5tYiIsInNldmVuIiwiYmlsaWJpbGkiLCIxOTA1Il0sImhlYWRlciI6eyJVc2VyLUFnZW50Ijoib2todHRwLzQuOS4xIn19&key=星睿4k&url="
-    },
-    {
-      "name": "HD⚡老誊解析",
-      "type": 1,
-      "url": "http://shybot.top/v2/video/jx/?shykey=4595a71a4e7712568edcfa43949236b42fcfcb04997788ebe7984d6da2c6a51c&url="
-    },
-    {
-      "name": "4k水果⚡专解",
-      "type": 1,
-      "url": "http://shybot.top/v2/video/jx/?shykey=4595a71a4e7712568edcfa43949236b42fcfcb04997788ebe7984d6da2c6a51c&qn=max&url="
-    },
 
-    
+	  {"name":"4K智家","type":1,"url":"http://shybot.top/v2/video/jx/?shykey=4595a71a4e7712568edcfa43949236b42fcfcb04997788ebe7984d6da2c6a51c&url="},
+{"name":"HD⚡云视解析","type":1,"url":"http://shybot.top/v2/video/jx/?shykey=4595a71a4e7712568edcfa43949236b42fcfcb04997788ebe7984d6da2c6a51c&url=",
+	"ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","tucheng","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","yzm","aliyun","RJuMao","bilibili","1905","xinvip","XAL","qiqi","XALS","YuMi-vip"]},
 
-   
    
     {
       "name": "JSON",
