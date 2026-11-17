@@ -1,7 +1,7 @@
 {
- "spider": "./kjtw.jar",
-"wallpaper": "老陈壹线",
-   "lives": [
+ "蜘蛛": "./kjtw.jar",
+"壁纸": "老陈壹线",
+   "生命": [
    {"name": "老陈电视","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/cgj/refs/heads/main/ntv.txt",
         "epg": "http//epg.51zmte1.xml.gz?ch={name}&date={date}" },
         {"name": "老陈IPTV","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/IPTV.txt",
@@ -1783,8 +1783,7 @@
 
 
 	  {"name":"4K智家","type":1,"url":"http://shybot.top/v2/video/jx/?shykey=4595a71a4e7712568edcfa43949236b42fcfcb04997788ebe7984d6da2c6a51c&url="},
-{"name":"HD⚡云视解析","type":1,"url":"http://shybot.top/v2/video/jx/?shykey=4595a71a4e7712568edcfa43949236b42fcfcb04997788ebe7984d6da2c6a51c&url=",
-	"ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","tucheng","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","yzm","aliyun","RJuMao","bilibili","1905","xinvip","XAL","qiqi","XALS","YuMi-vip"]},
+
 
    
     {
