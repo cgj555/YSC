@@ -16,13 +16,13 @@
 
 "Warningtext": "欢迎收看老陈影视",
   "Site": [
- {
+{
       "key": "豆瓣",
-      "Name": "老陈推荐",
-      "Type"3
+      "name": "老陈推荐",
+      "type": 3,
       "api": "csp_Douban",
-      "Searchable"0,
-   "Changeable": 1
+      "searchable": 0,
+   "changeable": 1
     },
     {
       "key": "Configuration Center",
@@ -39,7 +39,7 @@
     },
 
 
-	 {
+     {
       "key": "聚合影视",
       "name": "🌟💚影视🌟聚合💚🌟",
       "api": "./lib/7uYtB1fB,yw1.py",
