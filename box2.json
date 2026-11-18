@@ -14,11 +14,11 @@
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
-"Warning text": "Welcome to Old Chen Film & Television",
+"Warning text": "欢迎收看老陈影视",
   "Site": [
  {
-      "key": "Douban",
-      "Name": "Recommended by Old Chen",
+      "key": "豆瓣",
+      "Name": "老陈推荐",
       "Type"3
       "api": "csp_Douban",
       "Searchable"0,
@@ -33,7 +33,7 @@
       "Changeable": 0,
       "indexs": 0,
       "style": {
-        "Type": "Rectangle",
+        "Type": "Rect",
         "ratio": 1.597
       }
     },
