@@ -1,6 +1,6 @@
 {
  "spider": "./kjtw.jar",
-"wallpaper": "老陈壹线",
+  "wallpaper": "https://sgmao.serv00.net/image/",
    "lives": [
    {"name": "老陈电视","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/cgj/refs/heads/main/ntv.txt",
       },
@@ -16,13 +16,12 @@
 "Warning text": "欢迎收看老陈影视",
   "site": [
 {
-      "key": "豆瓣",
-      "name": "老陈推荐",
-      "type": 3,
-      "api": "csp_Douban",
-      "searchable": 0,
-   "changeable": 1
-    },
+            "key": "豆瓣",
+            "name": "老陈推荐",
+            "type": 3,
+            "api": "csp_Douban",
+            "searchable": 0
+        },
     {
       "key": "Configuration Center",
       "Name": "🌌Configuration Center🌌",
