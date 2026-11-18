@@ -14,7 +14,7 @@
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
-"Warningtext": "欢迎收看老陈影视",
+"Warning text": "欢迎收看老陈影视",
   "Site": [
 {
       "key": "豆瓣",
