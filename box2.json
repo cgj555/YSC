@@ -2,15 +2,15 @@
  "spider": "./kjtw.jar",
   "wallpaper": "https://sgmao.serv00.net/image/",
    "lives": [
-   {"name": "老陈电视","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/cgj/refs/heads/main/ntv.txt",
+   {"name": "老陈电视","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/cgj/refs/heads/main/ntv.txt"
       },
-   {"name": "老陈IPTV","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/IPTV.txt",
+   {"name": "老陈IPTV","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/IPTV.txt"
           },
-   {"name": "老陈全国组播","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj444/alltv/refs/heads/main/zubo_all.txt",
+   {"name": "老陈全国组播","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj444/alltv/refs/heads/main/zubo_all.txt"
        },
-   {"name": "老陈酒店","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/itvlist.txt",
+   {"name": "老陈酒店","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/itvlist.txt"
         },
-   {"name": "局域网IPTV","type": 0,"url":"http://192.168.0.9:50089/sub?cgj=txt", }
+   {"name": "局域网IPTV","type": 0,"url":"http://192.168.0.9:50089/sub?cgj=txt" }
         ],
 
 "Warning text": "欢迎收看老陈影视",
