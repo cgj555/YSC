@@ -46,13 +46,7 @@
       "searchable": 1,
       "type": 3
     },
-	   {"name": "🌟💚影视🌟聚合💚🌟",
-            "api": "./lib/7uYtB1fB,yw1.py",
-            "filterable": 1,
-            "quickSearch": 1,
-            "searchable": 1,
-            "type": 3
-    },
+	   
     {
       "key": "豆花影视",
       "name": "豆花影视",
