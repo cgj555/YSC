@@ -1,7 +1,7 @@
 {
- "蜘蛛": "./spider.jar",
-"壁纸": "老陈壹线",
-   "生命": [
+ "spider": "./kjtw.jar",
+"wallpaper": "老陈壹线",
+   "lives": [
    {"name": "老陈电视","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/cgj/refs/heads/main/ntv.txt",
         "epg": "http//epg.51zmte1.xml.gz?ch={name}&date={date}" },
         {"name": "老陈IPTV","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/IPTV.txt",
@@ -14,26 +14,26 @@
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
-"警告文本": "欢迎收看老陈影视",
-  "站点": [
+"Warning text": "Welcome to Old Chen Film & Television",
+  "Site": [
  {
-      "key": "豆瓣",
-      "名称": "老陈推荐",
-      "类型": 3,
+      "key": "Douban",
+      "Name": "Recommended by Old Chen",
+      "Type"3
       "api": "csp_Douban",
-      "可搜索的": 0,
-   "可更改": 1
+      "Searchable"0,
+   "Changeable": 1
     },
     {
-      "key": "配置中心",
-      "名称": "🌌配置中心🌌",
-      "类型": 3,
+      "key": "Configuration Center",
+      "Name": "🌌Configuration Center🌌",
+      "Type": 3,
       "api": "csp_Config",
-      "可搜索的": 0,
-      "可更改": 0,
+      "Searchable": 0,
+      "Changeable": 0,
       "indexs": 0,
       "style": {
-        "类型": "矩形",
+        "Type": "Rectangle"
         "ratio": 1.597
       }
     },
