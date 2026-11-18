@@ -14,7 +14,7 @@
          "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"}
         ],
 
-"Warning text": "欢迎收看老陈影视",
+"Warningtext": "欢迎收看老陈影视",
   "Site": [
  {
       "key": "豆瓣",
@@ -33,18 +33,20 @@
       "Changeable": 0,
       "indexs": 0,
       "style": {
-        "Type": "Rect",
+        "type": "Rect",
         "ratio": 1.597
       }
     },
 
 
-	  {"name": "🌟💚影视🌟聚合💚🌟",
-            "api": "./lib/7uYtB1fB,yw1.py",
-            "filterable": 1,
-            "quickSearch": 1,
-            "searchable": 1,
-            "type": 3
+	 {
+      "key": "聚合影视",
+      "name": "🌟💚影视🌟聚合💚🌟",
+      "api": "./lib/7uYtB1fB,yw1.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
     },
 	   {
       "key": "影探",
