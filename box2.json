@@ -3,7 +3,7 @@
 "wallpaper": "老陈壹线",
    "lives": [
    {"name": "老陈电视","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/cgj/refs/heads/main/ntv.txt",
-        "epg": "http//epg.51zmte1.xml.gz?ch={name}&date={date}" },
+       "epg": "http://epg.51zmte1.xml.gz?ch={name}&date={date}"},
    {"name": "老陈IPTV","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj555/zubo/refs/heads/main/IPTV.txt",
           "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"},
    {"name": "老陈全国组播","type": 0,"url":"https://ghfast.top/https://raw.githubusercontent.com/cgj444/alltv/refs/heads/main/zubo_all.txt",
