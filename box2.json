@@ -37,6 +37,15 @@
         "ratio": 1.597
       }
     },
+
+
+	  {"name": "🌟💚影视🌟聚合💚🌟",
+            "api": "./lib/7uYtB1fB,yw1.py",
+            "filterable": 1,
+            "quickSearch": 1,
+            "searchable": 1,
+            "type": 3
+    },
 	   {
       "key": "影探",
       "name": "影探4k",
