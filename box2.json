@@ -155,7 +155,17 @@
       "type": 3
     },
  
-
+{
+            "key": "哔哩哔哩",
+            "name": "🅱️哔哩🔹合集",
+            "type": 3,
+            "api": "csp_Bili",
+             "jar": "https://raw.giteeusercontent.com/twvip/jarR/raw/master/se.jar",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "ext": "./js/bili.json"
+        },
     {
       "key": "vidhub",
       "name": "vidhub┃PY",
