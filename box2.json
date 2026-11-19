@@ -36,15 +36,7 @@
         },
 
 
-     {
-      "key": "聚合影视",
-      "name": "影视聚合",
-      "api": "./lib/7uYtB1fB,yw1.py",
-      "filterable": 1,
-      "quickSearch": 1,
-      "searchable": 1,
-      "type": 3
-    },
+    
 	   {
       "key": "影探",
       "name": "影探4k",
@@ -164,7 +156,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "./js/bili.json"
+            "ext": "./lib/bili.json"
         },
     {
       "key": "vidhub",
