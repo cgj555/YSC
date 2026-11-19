@@ -76,17 +76,7 @@
             "filterable": 1,
             "playerType": 2
         },
-      {
-            "key": "py_红果本地网",
-            "name": "📱红果网ᵖʸ｜短剧",
-            "type": 3,
-            "api": "./lib/红果短剧.py",
-            "searchable": 1,
-            "changeable": 1,
-            "quickSearch": 1,
-            "filterable": 1,
-            "playerType": 2
-        },
+     
 
     {
       "key": "看客TV",
