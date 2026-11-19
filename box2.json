@@ -36,8 +36,8 @@
         },
 
  {
-      "key": "裤佬独家免扫4K",
-      "name": "👖裤佬丨独家丨免扫4K",
+      "key": "免扫4K",
+      "name": "丨独家丨免扫4K",
       "type": 3,
       "jar": "https://ncstatic-file.clewm.net/rsrc/2026/0416/20/1fe667cd217a0c314b8ca59310dbf45d.jpg;md5;a4f403a000bc5e4ebdd9da27fcb05852",
       "api": "csp_AppV6",
@@ -1184,23 +1184,7 @@
       "type": 3,
       "api": "./lib/哔哩直播.py"
     },
-  {
-      "key": "bili",
-      "name": "🅱哔哔┃合集🅱",
-      "type": 3,
-      "api": "csp_BiliGuard",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "style": {
-        "type": "rect",
-        "ratio": 1.433
-      },
-   "jar":"https://nos.netease.com/ysf/50059c222b1264907b612ae07d04b9cf.txt;md5;97d788866a626c470cbcf7698dc08900",
-      "ext": {
-        "json": "./lib/bili001.txt"
-      }
-    },
+
     
      {
       "key": "DJ呦呦音乐网",
