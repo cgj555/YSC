@@ -85,7 +85,41 @@
         "漫剧"
       ]
     },
-    
+
+	      {
+      "key": "YunDuo",
+      "name": "多多影视┃APP",
+      "type": 3,
+      "api": "csp_YunDuo",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "host": "https://323433ssdfd.top",
+        "block": [
+          "PO蓝光",
+          "CO4K",
+          "ZJ4k",
+          "NB蓝光"
+        ]
+      }
+    },
+	    {
+      "key": "DyXia",
+      "name": "🍂┃影侠┃影视",
+      "type": 3,
+      "api": "csp_DyXia",
+      "searchable": 1,
+      "filterable": 0,
+      "ext": "{\"blockedFroms\":[\"4K\"]}"
+    },
+        "key": "DongPian",
+      "name": "🍂┃懂片┃秒播",
+      "type": 3,
+      "api": "csp_DongPian",
+      "searchable": 1,
+      "filterable": 0
+    },
 	   {
       "key": "影探",
       "name": "影探4k",
@@ -94,6 +128,37 @@
       "quickSearch": 1,
       "searchable": 1,
       "type": 3
+    },
+	  {
+      "key": "Dubk",
+      "name": "🍂┃杜北┃秒播",
+      "type": 3,
+      "api": "csp_Dubk",
+      "searchable": 1,
+      "filterable": 1
+    },
+	    {
+      "key": "AppDramaPingguo",
+      "name": "🍂┃苹果┃1080P",
+      "type": 3,
+      "api": "csp_AppDrama",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "appName": "小苹果",
+        "commonKey": "ed5fdsgucxumegqa",
+        "publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCduNEnfxGaLuQRk5ABzXHhPV43zi00sCHjLo8BYc+Wi6xXm2b4v0i28Sq4WlNCKhseft9fz8kO/qLr6/022o1RcuOU7e4GFL3U9WnNODwRBYSYWd+K8nqpI/tAUDmZEBGRWqjrc7x6aMl3A+xpnWkLbPCLsuhbuuUE3tv09oeOpwIDAQAB",
+        "dataKey": "S0VNDTJHOFHHCNMRAW5IV2TOS2PBPQ==",
+        "dataIv": "OC1A06E197EF10CF3F6058CA7A803B5E",
+        "pkg": "com.juechufsh.android.xpg1",
+        "host": "",
+        "site": "https://xpgandroid03-1372779881.cos.ap-beijing.myqcloud.com/app_xpg_android.txt",
+        "version": "1.0.0.3",
+        "decrypt": "1",
+        "danmu": true,
+        "danmu_api": "https://dm.211.li/nonay"
+      }
     },
 	   
     {
