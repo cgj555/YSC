@@ -88,13 +88,13 @@
 
 	      {
       "key": "YunDuo",
-      "name": "多多影视┃APP",
+      "name": "🍂┃多多┃APP",
       "type": 3,
       "api": "csp_YunDuo",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-    "jar": "./lib/XMjar",
+    "jar": "./lib/XMjar.php",
       "ext": {
         "host": "https://323433ssdfd.top",
         "block": [
@@ -110,7 +110,7 @@
       "name": "🍂┃影侠┃影视",
       "type": 3,
       "api": "csp_DyXia",
-	 "jar": "./lib/XMjar",
+    "jar": "./lib/XMjar.php",
       "searchable": 1,
       "filterable": 0,
       "ext": "{\"blockedFroms\":[\"4K\"]}"
@@ -119,7 +119,7 @@
       "name": "🍂┃懂片┃秒播",
       "type": 3,
       "api": "csp_DongPian",
-	 "jar": "./lib/XMjar",
+    "jar": "./lib/XMjar.php",
       "searchable": 1,
       "filterable": 0
     },
@@ -129,7 +129,7 @@
       "type": 3,
       "api": "csp_Gulu",
       "searchable": 1,
-	 "jar": "./lib/XMjar",	
+    "jar": "./lib/XMjar.php",	
       "quickSearch": 1,
       "filterable": 1
     },
@@ -139,7 +139,7 @@
       "name": "🍂┃杜北┃秒播",
       "type": 3,
       "api": "csp_Dubk",
-	 "jar": "./lib/XMjar",
+    "jar": "./lib/XMjar.php",
       "searchable": 1,
       "filterable": 1
     },
@@ -150,7 +150,7 @@
       "api": "csp_AppDrama",
       "searchable": 1,
       "quickSearch": 1,
-	 "jar": "./lib/XMjar",
+    "jar": "./lib/XMjar.php",
       "filterable": 1,
       "ext": {
         "appName": "小苹果",
@@ -172,7 +172,7 @@
       "name": "🍂┃影视┃解说",
       "type": 3,
       "api": "csp_Bili",
-	 "jar": "./lib/XMjar",
+    "jar": "./lib/XMjar.php",
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 0,
