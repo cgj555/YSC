@@ -94,6 +94,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
+    "jar": "./lib/XMjar",
       "ext": {
         "host": "https://323433ssdfd.top",
         "block": [
@@ -109,6 +110,7 @@
       "name": "🍂┃影侠┃影视",
       "type": 3,
       "api": "csp_DyXia",
+	 "jar": "./lib/XMjar",
       "searchable": 1,
       "filterable": 0,
       "ext": "{\"blockedFroms\":[\"4K\"]}"
@@ -117,23 +119,27 @@
       "name": "🍂┃懂片┃秒播",
       "type": 3,
       "api": "csp_DongPian",
+	 "jar": "./lib/XMjar",
       "searchable": 1,
       "filterable": 0
     },
-	   {
-      "key": "影探",
-      "name": "影探4k",
-      "api": "./lib/影探.py",
-      "filterable": 1,
-      "quickSearch": 1,
+	    {
+      "key": "Gulu",
+      "name": "🍂┃咕噜┃影视",
+      "type": 3,
+      "api": "csp_Gulu",
       "searchable": 1,
-      "type": 3
+	 "jar": "./lib/XMjar",	
+      "quickSearch": 1,
+      "filterable": 1
     },
+	
 	  {
       "key": "Dubk",
       "name": "🍂┃杜北┃秒播",
       "type": 3,
       "api": "csp_Dubk",
+	 "jar": "./lib/XMjar",
       "searchable": 1,
       "filterable": 1
     },
@@ -144,6 +150,7 @@
       "api": "csp_AppDrama",
       "searchable": 1,
       "quickSearch": 1,
+	 "jar": "./lib/XMjar",
       "filterable": 1,
       "ext": {
         "appName": "小苹果",
@@ -160,6 +167,17 @@
         "danmu_api": "https://dm.211.li/nonay"
       }
     },
+	     {
+      "key": "影视解说",
+      "name": "🍂┃影视┃解说",
+      "type": 3,
+      "api": "csp_Bili",
+	 "jar": "./lib/XMjar",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": "https://z.qiqiv.cn/666/json/影视解说.json"
+    },
 	   
     {
       "key": "豆花影视",
@@ -169,6 +187,15 @@
       "quickSearch": 1,
       "searchable": 1,
         "type": 3
+    },
+	     {
+      "key": "影探",
+      "name": "影探4k",
+      "api": "./lib/影探.py",
+      "filterable": 1,
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 3
     },
 
 	   {
