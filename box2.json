@@ -1301,15 +1301,16 @@
       "quickSearch": 1,
       "filterable": 1
     },
-    {
-      "key": "csp_XYQHiker_河马短剧",
-      "name": "🎦河马🔹短剧",
+     {
+      "name": "🎬盒马短剧",
+      "key": "Hema",
       "type": 3,
-      "api": "csp_XYQHiker",
+      "api": "csp_HemaAmns",
       "searchable": 1,
       "quickSearch": 1,
-      "filterable": 1,
-      "ext": "./lib/河马短剧.json"
+      "changeable": 1,
+      "genre": "shortdrama",
+      "jar": "https://nos.netease.com/vcloud-statistic/nrtc/06f4e557-b688-4920-86c3-6f1475e9a7c2.png"
     },
               {
       "key": "哔哩直播",
